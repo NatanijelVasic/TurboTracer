@@ -1,8 +1,6 @@
 
 > float accuracy: i need to prevent re-intersections with the current triangle. 1.0e-9 gives a bug, 1.0e-6 doesn't ?
 
-> tidy
-
 > clip HDR
 
 > weight vertex normals by tri area?
@@ -11,19 +9,11 @@
 
 > multithread CPU bounce loop
 
-> normal smoothing for inner glass bounces?
-
 > glass bug, dark areas inside glass
 
 > check GPU branch behaviour
 
 > multi-iterations for deeper bounces, to reduce GPU overhead 
-
-> Metal memory streamlining 
-
-> general camera raycast equation
-
-> jittery edges even with AA because of high light intensity clipping
 
 
 

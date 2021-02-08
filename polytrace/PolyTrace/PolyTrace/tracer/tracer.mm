@@ -27,7 +27,7 @@ float rndm(){
 
 simd_float3 orth(simd_float3 a){
     
-    simd_float3 random_vector = simd_make_float3(1, 1, 1);
+    simd_float3 random_vector = simd_make_float3(rndm(), rndm(), rndm());
     simd_float3 orth = random_vector - simd_dot(a, random_vector) * a;
     return simd_fast_normalize(orth);
     
@@ -152,9 +152,9 @@ void Tracer::gpu_raycast(int cpu_thread_id, int bounce){
                             
                             if(tri.type == 'l'){
                                 
-                                path->color.r *= 0.5f;
-                                path->color.g *= 0.9f;
-                                path->color.b *= 0.9f;
+                                path->color.r *= 1.0f;
+                                path->color.g *= 0.96f;
+                                path->color.b *= 0.87f;
                                 path->terminate();
                                 
                             }
@@ -162,7 +162,7 @@ void Tracer::gpu_raycast(int cpu_thread_id, int bounce){
                             if(tri.type == 'y'){
                                 
                                 path->color.r *= 0.9f;
-                                path->color.g *= 0.9f;
+                                path->color.g *= 0.5f;
                                 path->color.b *= 0.5f;
                                 path->terminate();
                                 
@@ -198,8 +198,8 @@ void Tracer::gpu_raycast(int cpu_thread_id, int bounce){
                                 if(rndm() < 0.5){
                                     
                                     path->color.r *= 0.00f;
-                                    path->color.g *= 0.95f;
-                                    path->color.b *= 0.65f;
+                                    path->color.g *= 0.80f;
+                                    path->color.b *= 0.95f;
                                     simd_float3 orth_a = orth(tri.n);
                                     simd_float3 orth_b = simd_cross(tri.n, orth_a);
                                     ray_direction_new = rndm() * tri.n + (rndm()-0.5f) * orth_a;
@@ -207,9 +207,9 @@ void Tracer::gpu_raycast(int cpu_thread_id, int bounce){
                                     
                                 } else {
                                     
-                                    path->color.r *= 0.90f;
+                                    path->color.r *= 0.50f;
                                     path->color.g *= 0.98f;
-                                    path->color.b *= 0.90f;
+                                    path->color.b *= 0.50f;
                                     ray_direction_new = ray_direction + 2.0f*abs(simd_dot(ray_direction, tri.n)) * tri.n;
                                     
                                 }
@@ -226,9 +226,9 @@ void Tracer::gpu_raycast(int cpu_thread_id, int bounce){
                                 if((int(1000000.0f + ray_position_new[0] * 5.0f)) % 2 ==
                                    (int(1000000.0f + ray_position_new[2] * 5.0f)) % 2){
                                     
-                                    path->color.r *= 0.95f;
-                                    path->color.g *= 0.95f;
-                                    path->color.b *= 0.90f;
+                                    path->color.r *= 0.9f;
+                                    path->color.g *= 0.1f;
+                                    path->color.b *= 0.9f;
                                     simd_float3 orth_a = orth(tri.n);
                                     simd_float3 orth_b = simd_cross(tri.n, orth_a);
                                     ray_direction_new = rndm() * tri.n + (rndm()-0.5f) * orth_a;
@@ -236,9 +236,9 @@ void Tracer::gpu_raycast(int cpu_thread_id, int bounce){
                                     
                                 } else {
                                     
-                                    path->color.r *= 0.85f;
-                                    path->color.g *= 0.85f;
-                                    path->color.b *= 0.85f;
+                                    path->color.r *= 0.4f;
+                                    path->color.g *= 0.03f;
+                                    path->color.b *= 0.4f;
                                     simd_float3 orth_a = orth(tri.n);
                                     simd_float3 orth_b = simd_cross(tri.n, orth_a);
                                     ray_direction_new = rndm() * tri.n + (rndm()-0.5f) * orth_a;
@@ -258,9 +258,9 @@ void Tracer::gpu_raycast(int cpu_thread_id, int bounce){
                                 if((int(1000000.0f + ray_position_new[0] * 2.0f)) % 2 ==
                                    (int(1000000.0f + ray_position_new[1] * 2.0f)) % 2){
                                     
-                                    path->color.r *= 0.95f;
-                                    path->color.g *= 0.95f;
-                                    path->color.b *= 0.90f;
+                                    path->color.r *= 0.9f;
+                                    path->color.g *= 0.1f;
+                                    path->color.b *= 0.9f;
                                     simd_float3 orth_a = orth(tri.n);
                                     simd_float3 orth_b = simd_cross(tri.n, orth_a);
                                     ray_direction_new = rndm() * tri.n + (rndm()-0.5f) * orth_a;
@@ -268,9 +268,9 @@ void Tracer::gpu_raycast(int cpu_thread_id, int bounce){
                                     
                                 } else {
                                     
-                                    path->color.r *= 0.85f;
-                                    path->color.g *= 0.85f;
-                                    path->color.b *= 0.85f;
+                                    path->color.r *= 0.4f;
+                                    path->color.g *= 0.03f;
+                                    path->color.b *= 0.4f;
                                     simd_float3 orth_a = orth(tri.n);
                                     simd_float3 orth_b = simd_cross(tri.n, orth_a);
                                     ray_direction_new = rndm() * tri.n + (rndm()-0.5f) * orth_a;
@@ -343,22 +343,27 @@ void Tracer::gpu_raycast(int cpu_thread_id, int bounce){
                             
                         } else { // dome lighting
                             
-                            float pi = 3.14159265;
+//                            float pi = 3.14159265;
+//                            
+//                            float x = ray_direction[0];
+//                            float y = ray_direction[1];
+//                            float z = ray_direction[2];
+//                            
+//                            float phi = atan2(z, x);
+//                            float theta = atan2(sqrt(x * x + z * z), y);
+//                            
+//                            int ix = (phi/(2.0f*pi)) * DOMEWIDTH;
+//                            int iy = (theta/pi) * DOMEHEIGHT;
+//
+//                            Color dome_color = _scene->dome[iy * DOMEWIDTH + (2*ix + 0) % DOMEWIDTH];
+//                            path->color.r *= dome_color.r;
+//                            path->color.g *= dome_color.g;
+//                            path->color.b *= dome_color.b;
+//                            path->terminate();
                             
-                            float x = ray_direction[0];
-                            float y = ray_direction[1];
-                            float z = ray_direction[2];
-                            
-                            float phi = atan2(z, x);
-                            float theta = atan2(sqrt(x * x + z * z), y);
-                            
-                            int ix = (phi/(2.0f*pi)) * DOMEWIDTH;
-                            int iy = (theta/pi) * DOMEHEIGHT;
-
-                            Color dome_color = _scene->dome[iy * DOMEWIDTH + (2*ix + 0) % DOMEWIDTH];
-                            path->color.r *= dome_color.r;
-                            path->color.g *= dome_color.g;
-                            path->color.b *= dome_color.b;
+                            path->color.r *= 0.0f;
+                            path->color.g *= 0.0f;
+                            path->color.b *= 0.0f;
                             path->terminate();
                             
                         }

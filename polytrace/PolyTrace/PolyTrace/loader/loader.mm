@@ -21,17 +21,17 @@ void Loader::load_obj(string filepath, Scene &scene){
     scene.vertices.push_back(Vertex(simd_make_float3(0, 0, 1000)));
     scene.vertices.push_back(Vertex(simd_make_float3(100, 0, -100))); // floor
     
-//    scene.vertices.push_back(Vertex(simd_make_float3(0, 2, -1)));
-//    scene.vertices.push_back(Vertex(simd_make_float3(6, 2, -1)));
-//    scene.vertices.push_back(Vertex(simd_make_float3(3, 5, 0))); // backlight
+    scene.vertices.push_back(Vertex(simd_make_float3(0, 2, -1)));
+    scene.vertices.push_back(Vertex(simd_make_float3(6, 2, -1)));
+    scene.vertices.push_back(Vertex(simd_make_float3(3, 5, 0))); // backlight
     
     scene.vertices.push_back(Vertex(simd_make_float3(-20, 0, 7)));
     scene.vertices.push_back(Vertex(simd_make_float3(-20, 2000, 7)));
     scene.vertices.push_back(Vertex(simd_make_float3(20, 0, 7))); // wall
     
-//    scene.vertices.push_back(Vertex(simd_make_float3(-0, 2, -1)));
-//    scene.vertices.push_back(Vertex(simd_make_float3(-3, 5, 0))); // backlight
-//    scene.vertices.push_back(Vertex(simd_make_float3(-6, 2, -1)));
+    scene.vertices.push_back(Vertex(simd_make_float3(-0, 2, -1)));
+    scene.vertices.push_back(Vertex(simd_make_float3(-3, 5, 0))); // backlight
+    scene.vertices.push_back(Vertex(simd_make_float3(-6, 2, -1)));
         
     const int VERTS = 125066; // HARD
     const int TRIS = 249999; // HARD
@@ -73,33 +73,33 @@ void Loader::load_obj(string filepath, Scene &scene){
                                        &scene.vertices[2],
                                        's', true, false)); // floor
     
-//    scene.triangles.push_back(Triangle(&scene.vertices[3],
-//                                       &scene.vertices[4],
-//                                       &scene.vertices[5],
-//                                       'l', true, false)); // light
-    
     scene.triangles.push_back(Triangle(&scene.vertices[3],
                                        &scene.vertices[4],
                                        &scene.vertices[5],
+                                       'l', true, false)); // light
+    
+    scene.triangles.push_back(Triangle(&scene.vertices[6],
+                                       &scene.vertices[7],
+                                       &scene.vertices[8],
                                        'w', true, false)); // wall
     
-//    scene.triangles.push_back(Triangle(&scene.vertices[6],
-//                                       &scene.vertices[7],
-//                                       &scene.vertices[8],
-//                                       'y', true, false)); // light left
+    scene.triangles.push_back(Triangle(&scene.vertices[9],
+                                       &scene.vertices[10],
+                                       &scene.vertices[11],
+                                       'y', true, false)); // light left
     
     for (int i = 0; i < TRIS; i++){
         
-        const int offset = 6;
+        const int offset = 12; // Hard
         
-        scene.triangles.push_back(Triangle(&scene.vertices[face[i][0] - 1 + offset], // hard 6
-                                           &scene.vertices[face[i][1] - 1 + offset], // hard 6
-                                           &scene.vertices[face[i][2] - 1 + offset], // hard 6
+        scene.triangles.push_back(Triangle(&scene.vertices[face[i][0] - 1 + offset],
+                                           &scene.vertices[face[i][1] - 1 + offset],
+                                           &scene.vertices[face[i][2] - 1 + offset],
                                            'm', false, true));
         
-        scene.vertices[face[i][0] - 1 + offset].add_normal(scene.triangles.back().n); // hard 6
-        scene.vertices[face[i][1] - 1 + offset].add_normal(scene.triangles.back().n); // hard 6
-        scene.vertices[face[i][2] - 1 + offset].add_normal(scene.triangles.back().n); // hard 6
+        scene.vertices[face[i][0] - 1 + offset].add_normal(scene.triangles.back().n);
+        scene.vertices[face[i][1] - 1 + offset].add_normal(scene.triangles.back().n);
+        scene.vertices[face[i][2] - 1 + offset].add_normal(scene.triangles.back().n);
         
     }
     

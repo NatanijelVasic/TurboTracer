@@ -22,7 +22,7 @@ const float     HFOV                   =        3.2;
 const float     VFOV                   =        2.0;
 
 const float     FOCUS                  =        1.6f;
-const float     DOF                    =        0.12f;
+const float     DOF                    =        0.16f;
 
 const float     MODEL_SCALE            =        0.03f;
 const float     MODEL_ROTATION         =        -0.8f;
