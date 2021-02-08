@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "B4F5AD9C-4995-4258-8AAE-3E035B7189E0"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB3D4771-9672-4324-8B05-23F6526F906D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PolyTrace/world/scene.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "Scene::blockify(block_scale)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2898B9D3-EAE7-4472-B024-5A540AC4B131"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PolyTrace/world/camera.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "Camera::Camera(init_position, init_direction, init_direction_up, init_zoom)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2898B9D3-EAE7-4472-B024-5A540AC4B131 - 81e71f1fd5d2a9bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Camera::Camera(float vector[3], float vector[3], float vector[3], float)"
+                  moduleName = "PolyTrace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/natanijelvasic/Desktop/raytrace/polytrace/PolyTrace/PolyTrace/world/camera.mm"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "2898B9D3-EAE7-4472-B024-5A540AC4B131 - 81e71f1fd5d2a9bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Camera::Camera(float vector[3], float vector[3], float vector[3], float)"
+                  moduleName = "PolyTrace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/natanijelvasic/Desktop/raytrace/polytrace/PolyTrace/PolyTrace/world/camera.mm"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
